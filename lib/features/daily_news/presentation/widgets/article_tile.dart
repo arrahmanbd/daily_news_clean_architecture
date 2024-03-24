@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:news_api_clean_architecture/core/constants/constants.dart';
+import 'package:daily_news_clean_architecture/core/constants/constants.dart';
 import '../../domain/entities/article.dart';
 
 class ArticleWidget extends StatelessWidget {

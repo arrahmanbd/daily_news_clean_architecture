@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_api_clean_architecture/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
-import 'package:news_api_clean_architecture/features/daily_news/presentation/bloc/article/remote/remote_article_state.dart';
-import 'package:news_api_clean_architecture/service_locator.dart';
+import 'package:daily_news_clean_architecture/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
+import 'package:daily_news_clean_architecture/features/daily_news/presentation/bloc/article/remote/remote_article_state.dart';
+import 'package:daily_news_clean_architecture/service_locator.dart';
 
 import '../../../domain/entities/article.dart';
 import '../../widgets/article_tile.dart';
@@ -23,14 +23,15 @@ class DailyNews extends StatelessWidget {
     return AppBar(
       title: const Text(
         'DailyNews',
-       
       ),
       actions: [
         GestureDetector(
           onTap: () => _onShowSavedArticlesViewTapped(context),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 14),
-            child: Icon(Icons.bookmark, ),
+            child: Icon(
+              Icons.bookmark,
+            ),
           ),
         ),
       ],
@@ -61,6 +62,8 @@ class DailyNews extends StatelessWidget {
               child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(Icons.error),
                 const SizedBox(height: 10.0),

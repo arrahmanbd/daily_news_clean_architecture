@@ -1,6 +1,6 @@
 {
-    "name": "news_api_clean_architecture",
-    "short_name": "news_api_clean_architecture",
+    "name": "daily_news_clean_architecture",
+    "short_name": "daily_news_clean_architecture",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

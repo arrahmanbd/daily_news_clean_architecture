@@ -1,6 +1,6 @@
 import 'package:floor/floor.dart';
-import 'package:news_api_clean_architecture/features/daily_news/domain/entities/article.dart';
-import '../../../../core/constants/constants.dart';
+import 'package:daily_news_clean_architecture/features/daily_news/domain/entities/article.dart';
+import '../../../../../core/constants/constants.dart';
 
 @Entity(tableName: 'article', primaryKeys: ['id'])
 class ArticleModel extends ArticleEntity {
