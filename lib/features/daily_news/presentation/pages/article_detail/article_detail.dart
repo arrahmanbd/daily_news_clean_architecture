@@ -1,12 +1,10 @@
+import 'package:daily_news_clean_architecture/features/daily_news/presentation/riverpod/article/local/local_article_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:daily_news_clean_architecture/core/constants/constants.dart';
-import '../../../../../../service_locator.dart';
 import '../../../domain/entities/article.dart';
-import '../../bloc/article/local/local_article_bloc.dart';
-import '../../bloc/article/local/local_article_event.dart';
 
 class ArticleDetailsView extends HookWidget {
   final ArticleEntity? article;
@@ -15,13 +13,10 @@ class ArticleDetailsView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<LocalArticleBloc>(),
-      child: Scaffold(
-        appBar: _buildAppBar(),
-        body: _buildBody(),
-        floatingActionButton: _buildFloatingActionButton(),
-      ),
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: _buildBody(),
+      floatingActionButton: _buildFloatingActionButton(),
     );
   }
 
@@ -105,12 +100,16 @@ class ArticleDetailsView extends HookWidget {
   }
 
   Widget _buildFloatingActionButton() {
-    return Builder(
-      builder: (context) => FloatingActionButton(
-        backgroundColor: Colors.white,
-        onPressed: () => _onFloatingActionButtonPressed(context),
-        child: const Icon(Ionicons.heart, color: Colors.red),
-      ),
+    return Consumer(
+      builder: (_, WidgetRef ref, __) {
+        return Builder(
+          builder: (context) => FloatingActionButton(
+            backgroundColor: Colors.white,
+            onPressed: () => _onFloatingActionButtonPressed(context, ref),
+            child: const Icon(Ionicons.heart, color: Colors.red),
+          ),
+        );
+      },
     );
   }
 
@@ -118,11 +117,11 @@ class ArticleDetailsView extends HookWidget {
     Navigator.pop(context);
   }
 
-  void _onFloatingActionButtonPressed(BuildContext context) {
-    BlocProvider.of<LocalArticleBloc>(context).add(SaveArticle(article!));
+  void _onFloatingActionButtonPressed(BuildContext context, WidgetRef ref) {
+    ref.read(saveProvider.notifier).saveArticle(article!);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.red,
         content: Text('Added to favourite List.'),
       ),
     );

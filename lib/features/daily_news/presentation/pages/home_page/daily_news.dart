@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:daily_news_clean_architecture/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
-import 'package:daily_news_clean_architecture/features/daily_news/presentation/bloc/article/remote/remote_article_state.dart';
-import 'package:daily_news_clean_architecture/service_locator.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/article.dart';
+import '../../riverpod/article/remote/article_provider.dart';
+import '../../riverpod/article/remote/article_state.dart';
 import '../../widgets/article_tile.dart';
 
 class DailyNews extends StatelessWidget {
@@ -15,7 +14,7 @@ class DailyNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppbar(context),
-      body: _refreshBody(context),
+      body: _buildBody(),
     );
   }
 
@@ -38,53 +37,42 @@ class DailyNews extends StatelessWidget {
     );
   }
 
-  Widget _refreshBody(BuildContext context) {
-    Future<void> _refresh() async {
-      sl<RemoteArticlesBloc>();
-    }
-
-    return RefreshIndicator(
-      child: _buildBody(),
-      onRefresh: () async {
-        await _refresh();
-      },
-    );
-  }
-
+//Riverpod state management
   _buildBody() {
-    return BlocBuilder<RemoteArticlesBloc, RemoteArticlesState>(
-      builder: (_, state) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final state = ref.watch(articleProvider);
+        //Refreshing function
+        Future<void> refresh() async =>
+            ref.read(articleProvider.notifier).fetchArticles();
         if (state is RemoteArticlesLoading) {
-          return const Center(child: CupertinoActivityIndicator());
-        }
-        if (state is RemoteArticlesError) {
-          return Center(
-              child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.error),
-                const SizedBox(height: 10.0),
-                Text(state.error!.message.toString())
-              ],
-            ),
-          ));
-        }
-        if (state is RemoteArticlesDone) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is RemoteArticlesDone) {
           return ListView.builder(
+            itemCount: state.articles!.length,
             itemBuilder: (context, index) {
+              final article = state.articles![index];
               return ArticleWidget(
-                article: state.articles![index],
+                article: article,
                 onArticlePressed: (article) =>
                     _onArticlePressed(context, article),
               );
             },
-            itemCount: state.articles!.length,
+          );
+        } else {
+          return Center(
+            child: Column(
+              children: [
+                IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.refresh_sharp)),
+                const SizedBox(height: 10.0),
+                Text('Error: ${state.error!.message}'),
+              ],
+            ),
           );
         }
-        return const SizedBox();
       },
     );
   }
