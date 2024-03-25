@@ -1,13 +1,12 @@
-## Flutter NewsApi app 
+## Flutter NewsApi (Riverpod 🎯)
 NewsApp is a sleek and intuitive mobile application designed to keep you informed with the latest news updates from around the globe. With a clean interface and powerful features, staying up-to-date with current events has never been easier. Leveraging the robust capabilities of NewsAPI.org along with cutting-edge technologies like Retrofit, BLoC, GetIt, and Floor, NewsApp delivers a seamless user experience with comprehensive news coverage.
 
 
-## Key Features
-- This is Riverpod Branch 🦕 
+##Riverpod Features
 - Daily News Updates: Get access to a wide range of news articles covering diverse topics including politics, technology, business, entertainment, sports, and more.
 - Offline Access: Enjoy uninterrupted access to news content even when you're offline, thanks to the offline caching feature powered by Floor.
 - Smooth Navigation: Navigate through news categories effortlessly with a user-friendly interface designed for intuitive interaction.
-- Seamless Integration: Benefit from seamless integration of Retrofit for efficient API communication and BLoC for state management, ensuring smooth performance and responsiveness.
+- Seamless Integration: Benefit from seamless integration of Retrofit for efficient API communication and Riverpod for state management, ensuring smooth performance and responsiveness.
 - Dependency Injection: Utilize GetIt for efficient dependency injection, enhancing the scalability and maintainability of the app's architecture.
   
 With DailyNewsApp, you can explore the Flutter Clean Architecture and experience the SOLID coding!
@@ -15,7 +14,7 @@ With DailyNewsApp, you can explore the Flutter Clean Architecture and experience
 ## Getting Started
 **Clone the Repository:**
    ```bash
-   git clone https://github.com/arrahmanbd/daily_news_clean_architecture.git
+   git clone -b riverpod https://github.com/arrahmanbd/daily_news_clean_architecture.git
 ```
 
 ## Packages
