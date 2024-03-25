@@ -12,12 +12,12 @@ NewsApp is a sleek and intuitive mobile application designed to keep you informe
   
 With DailyNewsApp, you can explore the Flutter Clean Architecture and experience the SOLID coding!
 
-## Getting Started [Bloc 📦 ]
+## 📦 Getting Started [Bloc]
 **Clone the Repository:**
    ```bash
    git clone https://github.com/arrahmanbd/daily_news_clean_architecture.git
 ```
-## Getting started [Riverpod 🎯 ]
+##  🎯 Getting started [Riverpod]
 **Clone the Riverpod branch🌿:**
    ```bash
   git clone -b riverpod https://github.com/arrahmanbd/daily_news_clean_architecture.git
