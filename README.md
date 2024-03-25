@@ -1,8 +1,9 @@
-## Flutter NewsApi app 
+## Flutter NewsApi app (Bloc & Riverpod) 
 NewsApp is a sleek and intuitive mobile application designed to keep you informed with the latest news updates from around the globe. With a clean interface and powerful features, staying up-to-date with current events has never been easier. Leveraging the robust capabilities of NewsAPI.org along with cutting-edge technologies like Retrofit, BLoC, GetIt, and Floor, NewsApp delivers a seamless user experience with comprehensive news coverage.
 
 
 ## Key Features
+- Bloc & Riverpod: Added Riverpod clean architecture 🎯 on riverpod branch 🌿.
 - Daily News Updates: Get access to a wide range of news articles covering diverse topics including politics, technology, business, entertainment, sports, and more.
 - Offline Access: Enjoy uninterrupted access to news content even when you're offline, thanks to the offline caching feature powered by Floor.
 - Smooth Navigation: Navigate through news categories effortlessly with a user-friendly interface designed for intuitive interaction.
