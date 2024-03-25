@@ -3,6 +3,7 @@ NewsApp is a sleek and intuitive mobile application designed to keep you informe
 
 
 ## Key Features
+- This is Riverpod Branch 🦕 
 - Daily News Updates: Get access to a wide range of news articles covering diverse topics including politics, technology, business, entertainment, sports, and more.
 - Offline Access: Enjoy uninterrupted access to news content even when you're offline, thanks to the offline caching feature powered by Floor.
 - Smooth Navigation: Navigate through news categories effortlessly with a user-friendly interface designed for intuitive interaction.
