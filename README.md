@@ -23,7 +23,7 @@ Packages I used in this project
 
 ```bash
   #state management
-  flutter_bloc: ^8.1.2
+  flutter_riverpod: ^2.5.1
 
   #comparing dart objects
   equatable: ^2.0.5
